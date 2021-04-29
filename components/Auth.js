@@ -29,7 +29,7 @@ export default function Auth() {
             return res.json();
           }
         })
-        .then((res) => {
+        .then((data) => {
           const options = { path: '/' };
           cookie.set('access_token', data.access, options);
         });
@@ -54,8 +54,6 @@ export default function Auth() {
         }).then((res) => {
           if (res.status === 400) {
             throw 'authentication failed';
-          } else if (res.ok) {
-            return res.json();
           }
         });
         login();
