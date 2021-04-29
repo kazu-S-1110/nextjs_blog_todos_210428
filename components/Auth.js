@@ -109,7 +109,7 @@ export default function Auth() {
         <div className="flex items-center justify-center">
           <div className="text-sm">
             <span
-              href="#"
+              onClick={() => setIsLogin(!isLogin)}
               className="font-medium text-white hover:text-indigo-500 cursor-pointer"
             >
               Change mode ?
@@ -137,7 +137,7 @@ export default function Auth() {
                 />
               </svg>
             </span>
-            Sign in
+            {isLogin ? 'Login with JWT' : 'Create new user'}
           </button>
         </div>
       </form>
