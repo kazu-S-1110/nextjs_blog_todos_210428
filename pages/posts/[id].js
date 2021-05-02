@@ -52,5 +52,6 @@ export async function getStaticProps({ params }) {
     props: {
       post,
     },
+    revalidate: 3, // ISRの有効化はこの一行でできる,(Incremental Static Regeneration)
   };
 }
