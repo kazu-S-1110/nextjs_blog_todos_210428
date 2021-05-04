@@ -10,7 +10,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Post({ staticTask, id }) {
   const router = useRouter();
-  const { date: task, mutate } = useSWR(
+  const { data: task, mutate } = useSWR(
     `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/detail-task/${id}`,
     fetcher,
     {

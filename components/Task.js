@@ -6,7 +6,7 @@ export default function Task({ task }) {
       <span>{task.id}</span>
       {' : '}
       <Link href={`/tasks/${task.id}`}>
-        <span className="cursor-pointer text-white border-b bg-gray-500 hover:bg-gray-600">
+        <span className="cursor-pointer text-white border-b  hover:bg-gray-600">
           {task.title}
         </span>
       </Link>
