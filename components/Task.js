@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import Cookie from 'universal-cookie';
+import { useContext } from 'react';
+import { StateContext } from '../context/StateContext';
 
 const cookie = new Cookie();
 
 export default function Task({ task, taskDeleted }) {
+  const { setSelectedTask } = useContext(StateContext);
   const deleteTask = async () => {
     await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/${task.id}/`, {
       method: 'DELETE',
@@ -29,6 +32,21 @@ export default function Task({ task, taskDeleted }) {
         </span>
       </Link>
       <div className="float-right ml-20">
+        <svg
+          onClick={() => setSelectedTask(task)}
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 float-left cursor-pointer"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+          />
+        </svg>
         <svg
           onClick={deleteTask}
           xmlns="http://www.w3.org/2000/svg"
