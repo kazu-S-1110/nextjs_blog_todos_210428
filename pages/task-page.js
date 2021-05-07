@@ -4,6 +4,7 @@ import Link from 'next/link';
 import StateContextProvider from '../context/StateContext';
 import { getAllTasksData } from '../lib/tasks';
 import Task from '../components/Task';
+import TaskForm from '../components/TaskForm';
 import useSWR from 'swr';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -23,6 +24,7 @@ export default function TaskPage({ staticFilteredTasks }) {
   return (
     <StateContextProvider>
       <Layout title="Task Page">
+        <TaskForm taskCreated={mutate} />
         <ul>
           {filteredTasks &&
             filteredTasks.map((task) => (
